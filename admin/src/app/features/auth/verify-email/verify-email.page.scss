@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.auth-verify {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-verify__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-verify__actions a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+

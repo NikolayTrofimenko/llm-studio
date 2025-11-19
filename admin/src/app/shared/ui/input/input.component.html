@@ -1,0 +1,32 @@
+<label
+  class="ui-field"
+  [ngClass]="fieldClasses"
+>
+  <div class="ui-field__label-row" *ngIf="label || required">
+    <span class="ui-field__label">{{ label }}</span>
+    <span class="ui-field__required" *ngIf="required">обязательно</span>
+  </div>
+
+  <div class="ui-field__control">
+    <span class="ui-field__affix" *ngIf="prefix">{{ prefix }}</span>
+    <input
+      [attr.type]="type"
+      class="ui-field__input"
+      [placeholder]="placeholder"
+      [value]="value"
+      [disabled]="isDisabled"
+      [attr.aria-invalid]="hasError"
+      [attr.aria-required]="required"
+      (input)="handleInput($event)"
+      (focus)="handleFocus()"
+      (blur)="handleBlur()"
+    />
+    <span class="ui-field__affix" *ngIf="suffix">{{ suffix }}</span>
+  </div>
+
+  <p class="ui-field__message" *ngIf="error || hint">
+    <span class="ui-field__error" *ngIf="error">{{ error }}</span>
+    <span class="ui-field__hint" *ngIf="!error && hint">{{ hint }}</span>
+  </p>
+</label>
+

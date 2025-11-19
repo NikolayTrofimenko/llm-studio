@@ -1,0 +1,109 @@
+:host {
+  display: block;
+}
+
+.ui-checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.ui-checkbox__native {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ui-checkbox__box {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.6rem;
+  border: 2px solid var(--color-border);
+  display: grid;
+  place-items: center;
+  color: var(--color-accent-contrast);
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.ui-checkbox__box svg {
+  width: 12px;
+  height: 10px;
+  stroke: currentColor;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.ui-checkbox__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--color-text);
+}
+
+.ui-checkbox__label {
+  font-weight: 600;
+}
+
+.ui-checkbox__description {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.ui-checkbox__message {
+  margin: 0.35rem 0 0 0;
+  font-size: 0.85rem;
+}
+
+.ui-checkbox__hint {
+  color: var(--color-text-muted);
+}
+
+.ui-checkbox__error {
+  color: var(--color-danger);
+  font-weight: 500;
+}
+
+.ui-checkbox--checked {
+  border-color: var(--color-border-accent);
+  background: var(--color-surface-tint);
+  box-shadow: 0 10px 30px rgba(122, 90, 248, 0.15);
+}
+
+.ui-checkbox--checked .ui-checkbox__box {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 15px rgba(122, 90, 248, 0.25);
+}
+
+.ui-checkbox--checked .ui-checkbox__box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ui-checkbox--focused {
+  box-shadow: 0 0 0 3px rgba(122, 90, 248, 0.18);
+}
+
+.ui-checkbox--error {
+  border-color: var(--color-danger);
+}
+
+.ui-checkbox--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

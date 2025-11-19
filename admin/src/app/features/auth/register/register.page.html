@@ -1,0 +1,69 @@
+<form class="auth-form" [formGroup]="form" (ngSubmit)="submit()">
+  <header class="auth-form__header">
+    <p class="auth-form__eyebrow">регистрация</p>
+    <h2>Создайте рабочий аккаунт</h2>
+    <p>Сразу после регистрации отправим письмо для подтверждения.</p>
+  </header>
+
+  <div class="auth-form__grid">
+    <ui-input
+      formControlName="firstName"
+      label="Имя"
+      placeholder="Александр"
+    ></ui-input>
+    <ui-input
+      formControlName="lastName"
+      label="Фамилия"
+      placeholder="Иванов"
+    ></ui-input>
+  </div>
+
+  <ui-input
+    formControlName="email"
+    label="Рабочий email"
+    placeholder="team@coco.design"
+    [required]="true"
+    [error]="form.controls.email.invalid && form.controls.email.touched ? 'Введите корректный email' : undefined"
+  ></ui-input>
+
+  <ui-input
+    formControlName="password"
+    type="password"
+    label="Пароль"
+    placeholder="••••••••"
+    [required]="true"
+    [error]="form.controls.password.invalid && form.controls.password.touched ? 'Минимум 8 символов' : undefined"
+  ></ui-input>
+
+  <ui-input
+    formControlName="confirmPassword"
+    type="password"
+    label="Повторите пароль"
+    placeholder="••••••••"
+    [required]="true"
+    [error]="
+      form.controls.confirmPassword.touched && !passwordsMatch()
+        ? 'Пароли должны совпадать'
+        : undefined
+    "
+  ></ui-input>
+
+  <ui-button type="submit" [loading]="loading()" [disabled]="loading()">
+    Создать аккаунт
+  </ui-button>
+
+  <p class="auth-form__hint">
+    Уже есть логин?
+    <a routerLink="/auth/login">Войти</a>
+  </p>
+
+  <p class="auth-form__success" *ngIf="success()">
+    {{ successMessage() }}
+    <a *ngIf="devLink()" [href]="devLink()" target="_blank" rel="noreferrer">
+      Открыть ссылку подтверждения
+    </a>
+  </p>
+
+  <p class="auth-form__error" *ngIf="error()">{{ error() }}</p>
+</form>
+

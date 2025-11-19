@@ -1,0 +1,77 @@
+<section class="landing">
+  <header class="landing__hero">
+    <div class="landing__nav">
+      <a class="landing__logo" routerLink="/">
+        <span class="landing__logo-dot"></span>
+        Madam&nbsp;Coco Admin
+      </a>
+      <div class="landing__nav-actions">
+        <a routerLink="/shared" class="landing__link">UI Kit</a>
+        <a routerLink="/auth/login" class="landing__link">Вход</a>
+        <app-theme-toggle></app-theme-toggle>
+      </div>
+    </div>
+
+    <div class="landing__hero-content">
+      <p class="landing__eyebrow">все для команд саппорта</p>
+      <h1>Единая админка для FAQ, мониторинга и эскалаций</h1>
+      <p class="landing__lead">
+        Современный Angular-монолит с защищённой авторизацией, формами,
+        темизацией и готовыми паттернами для роутинга. Войти в рабочий кабинет
+        можно после регистрации и подтверждения почты.
+      </p>
+      <div class="landing__hero-actions">
+        <a class="landing__cta landing__cta--primary" routerLink="/auth/register">
+          Создать аккаунт
+        </a>
+        <a class="landing__cta landing__cta--ghost" routerLink="/auth/login">
+          Перейти ко входу
+        </a>
+      </div>
+
+      <ul class="landing__highlights">
+        <li *ngFor="let item of highlights">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="landing__grid">
+    <article class="landing__card">
+      <p class="landing__card-eyebrow">Архитектура</p>
+      <h2>JWT + refresh + email токены</h2>
+      <p>
+        NestJS backend хранит сессии и email-токены в PostgreSQL, refresh находится
+        в httpOnly cookie. Все запросы идут через HttpInterceptor с автоматическим
+        обновлением access токена.
+      </p>
+    </article>
+
+    <article class="landing__card">
+      <p class="landing__card-eyebrow">UX</p>
+      <h2>Единые формы</h2>
+      <p>
+        Компоненты из /shared используются в каждом auth флоу, поэтому визуал
+        всегда консистентный. Есть тема, ответы на фокус и inline ошибки.
+      </p>
+    </article>
+
+    <article class="landing__card landing__card--steps">
+      <p class="landing__card-eyebrow">Онбординг</p>
+      <ol>
+        <li *ngFor="let step of steps">{{ step }}</li>
+      </ol>
+    </article>
+  </section>
+
+  <footer class="landing__footer">
+    <span>© {{ currentYear }} Madam Coco</span>
+    <div class="landing__footer-links">
+      <a routerLink="/shared">UI Components</a>
+      <a routerLink="/auth/login">Войти</a>
+    </div>
+  </footer>
+</section>
+

@@ -1,0 +1,40 @@
+<label
+  class="ui-select"
+  [ngClass]="selectClasses"
+>
+  <div class="ui-select__label-row" *ngIf="label || required">
+    <span class="ui-select__label">{{ label }}</span>
+    <span class="ui-select__required" *ngIf="required">обязательно</span>
+  </div>
+
+  <div class="ui-select__control">
+    <select
+      class="ui-select__native"
+      [value]="value ?? ''"
+      [disabled]="isDisabled"
+      (change)="onSelectionChange($event)"
+      (focus)="handleFocus()"
+      (blur)="handleBlur()"
+      [attr.aria-required]="required"
+      [attr.aria-invalid]="hasError"
+    >
+      <option value="" disabled [selected]="!value">
+        {{ placeholder }}
+      </option>
+      <option
+        *ngFor="let option of options; trackBy: trackByValue"
+        [value]="option.value"
+        [disabled]="option.disabled"
+      >
+        {{ option.label }}
+      </option>
+    </select>
+    <span class="ui-select__chevron" aria-hidden="true"></span>
+  </div>
+
+  <p class="ui-select__message" *ngIf="error || hint">
+    <span class="ui-select__error" *ngIf="error">{{ error }}</span>
+    <span class="ui-select__hint" *ngIf="!error && hint">{{ hint }}</span>
+  </p>
+</label>
+

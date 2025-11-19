@@ -1,0 +1,22 @@
+<section class="dashboard">
+  <header class="dashboard__header">
+    <h1>Рабочая панель</h1>
+    <p>Скоро здесь появятся виджеты по FAQ, диалогам и эскалациям.</p>
+  </header>
+
+  <div class="dashboard__widgets">
+    <article class="dashboard__widget" *ngFor="let widget of widgets">
+      <p class="dashboard__widget-eyebrow">{{ widget.title }}</p>
+      <strong>{{ widget.value }}</strong>
+      <span>{{ widget.trend }}</span>
+    </article>
+  </div>
+
+  <section class="dashboard__placeholder">
+    <h2>Router outlet</h2>
+    <p>
+      Добавляйте сюда любые компоненты: списки, таблицы, редакторы FAQ, дашборды.
+    </p>
+  </section>
+</section>
+

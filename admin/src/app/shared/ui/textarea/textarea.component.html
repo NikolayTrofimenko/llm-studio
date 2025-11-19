@@ -1,0 +1,26 @@
+<label
+  class="ui-textarea"
+  [ngClass]="textareaClasses"
+>
+  <div class="ui-textarea__label-row" *ngIf="label || required">
+    <span class="ui-textarea__label">{{ label }}</span>
+    <span class="ui-textarea__required" *ngIf="required">обязательно</span>
+  </div>
+  <textarea
+    class="ui-textarea__control"
+    [placeholder]="placeholder"
+    [rows]="rows"
+    [value]="value"
+    [disabled]="isDisabled"
+    (input)="handleInput($event)"
+    (focus)="handleFocus()"
+    (blur)="handleBlur()"
+    [attr.aria-invalid]="hasError"
+    [attr.aria-required]="required"
+  ></textarea>
+  <p class="ui-textarea__message" *ngIf="error || hint">
+    <span class="ui-textarea__error" *ngIf="error">{{ error }}</span>
+    <span class="ui-textarea__hint" *ngIf="!error && hint">{{ hint }}</span>
+  </p>
+</label>
+

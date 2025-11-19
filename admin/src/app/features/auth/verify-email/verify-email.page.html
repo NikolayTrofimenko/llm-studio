@@ -1,0 +1,16 @@
+<section class="auth-verify">
+  <p class="auth-form__eyebrow">подтверждение</p>
+  <h2>Подтвердите email</h2>
+  <p>{{ message() }}</p>
+
+  <div class="auth-verify__actions">
+    <ui-button (click)="verify()" [disabled]="!email() || !token()">
+      Подтвердить
+    </ui-button>
+    <ui-button variant="ghost" (click)="resend()">
+      Отправить снова
+    </ui-button>
+    <a routerLink="/auth/login">Перейти ко входу</a>
+  </div>
+</section>
+
