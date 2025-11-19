@@ -1,0 +1,31 @@
+<section class="auth-shell">
+  <div class="auth-shell__brand">
+    <a routerLink="/" class="auth-shell__logo">
+      <span class="auth-shell__logo-dot"></span>
+      Madam Coco
+    </a>
+    <a routerLink="/shared" class="auth-shell__link">UI Kit</a>
+    <app-theme-toggle></app-theme-toggle>
+  </div>
+
+  <div class="auth-shell__grid">
+    <article class="auth-shell__hero">
+      <p class="auth-shell__eyebrow">security-first</p>
+      <h1>Войдите в админку</h1>
+      <p>
+        JWT + refresh токены, подтверждение email и восстановление пароля по
+        письму. Всё на готовых компонентах shared UI.
+      </p>
+      <ul>
+        <li>Подтверждение регистрации по ссылке</li>
+        <li>Сброс пароля с токеном и TTL</li>
+        <li>Сессии и логаут с инвалидированием</li>
+      </ul>
+    </article>
+
+    <div class="auth-shell__form">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,33 @@
+<label
+  class="ui-checkbox"
+  [ngClass]="checkboxClasses"
+>
+  <input
+    class="ui-checkbox__native"
+    type="checkbox"
+    [checked]="checked"
+    [disabled]="isDisabled"
+    (change)="handleToggle()"
+    (focus)="handleFocus()"
+    (blur)="handleBlur()"
+    [attr.aria-invalid]="hasError"
+  />
+
+  <span class="ui-checkbox__box" aria-hidden="true">
+    <svg viewBox="0 0 12 10">
+      <polyline points="1 5.25 4.5 8.5 11 1.5"></polyline>
+    </svg>
+  </span>
+
+  <span class="ui-checkbox__text">
+    <span class="ui-checkbox__label">{{ label }}</span>
+    <span class="ui-checkbox__description" *ngIf="description">
+      {{ description }}
+    </span>
+  </span>
+</label>
+<p class="ui-checkbox__message" *ngIf="error || hint">
+  <span class="ui-checkbox__error" *ngIf="error">{{ error }}</span>
+  <span class="ui-checkbox__hint" *ngIf="!error && hint">{{ hint }}</span>
+</p>
+

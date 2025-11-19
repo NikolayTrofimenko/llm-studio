@@ -1,0 +1,7 @@
+packages:
+  - 'packages/*'
+  - 'admin'
+  - 'admin-e2e'
+  - 'api'
+  - 'api-e2e'
+autoInstallPeers: true

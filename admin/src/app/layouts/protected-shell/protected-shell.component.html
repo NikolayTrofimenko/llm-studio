@@ -1,0 +1,38 @@
+<section class="protected-shell">
+  <header class="protected-shell__header">
+    <a routerLink="/" class="protected-shell__brand">
+      <span class="protected-shell__logo-dot"></span>
+      Madam Coco Admin
+    </a>
+    <nav class="protected-shell__nav">
+      <a routerLink="/app" routerLinkActive="active">Главная</a>
+      <a routerLink="/shared">UI kit</a>
+    </nav>
+    <div class="protected-shell__header-actions">
+      <app-theme-toggle></app-theme-toggle>
+      <div class="protected-shell__user" *ngIf="authStore.user() as user">
+        <span>{{ user.email }}</span>
+        <button type="button" (click)="logout()">Выйти</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="protected-shell__body">
+    <aside class="protected-shell__sidebar">
+      <p class="protected-shell__sidebar-title">Навигация</p>
+      <a routerLink="/app" routerLinkActive="active">Дашборд</a>
+      <a routerLink="/app" class="disabled">FAQ (скоро)</a>
+      <a routerLink="/app" class="disabled">Диалоги (скоро)</a>
+    </aside>
+
+    <main class="protected-shell__content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <footer class="protected-shell__footer">
+    <span>© {{ currentYear }} Madam Coco. Все права защищены.</span>
+    <a routerLink="/auth/login">Сменить аккаунт</a>
+  </footer>
+</section>
+

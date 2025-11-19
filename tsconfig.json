@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./admin-e2e"
+    },
+    {
+      "path": "./api-e2e"
+    },
+    {
+      "path": "./api"
+    },
+    {
+      "path": "./admin"
+    }
+  ]
+}

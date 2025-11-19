@@ -1,0 +1,25 @@
+<label
+  class="ui-toggle"
+  [ngClass]="toggleClasses"
+>
+  <input
+    class="ui-toggle__native"
+    type="checkbox"
+    [checked]="value"
+    [disabled]="isDisabled"
+    (change)="toggle()"
+    (focus)="handleFocus()"
+    (blur)="handleBlur()"
+  />
+  <span class="ui-toggle__track" aria-hidden="true">
+    <span class="ui-toggle__thumb"></span>
+  </span>
+  <span class="ui-toggle__text">
+    <span class="ui-toggle__label">{{ label }}</span>
+    <span class="ui-toggle__description" *ngIf="description">{{
+      description
+    }}</span>
+  </span>
+</label>
+<p class="ui-toggle__hint" *ngIf="hint">{{ hint }}</p>
+

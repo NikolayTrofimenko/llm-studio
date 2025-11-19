@@ -1,0 +1,141 @@
+<section class="shared-gallery">
+  <header class="shared-gallery__hero">
+    <p class="shared-gallery__eyebrow">shared system</p>
+    <h1>Компоненты, готовые к продакшену</h1>
+    <p class="shared-gallery__lead">
+      Библиотека формовых элементов с адаптивной сеткой, темами и строгими
+      гайдлайнами по доступности. Добавляйте контролы в shared и используйте в
+      любом модуле.
+    </p>
+
+    <div class="shared-gallery__badges">
+      <div class="shared-gallery__badge" *ngFor="let badge of statusBadges">
+        <span class="shared-gallery__badge-title">{{ badge.title }}</span>
+        <span class="shared-gallery__badge-subtitle">{{ badge.subtitle }}</span>
+      </div>
+    </div>
+
+    <div class="shared-gallery__hero-actions">
+      <ui-button size="lg">Открыть UI-kit</ui-button>
+      <ui-button size="lg" variant="ghost">Документация</ui-button>
+    </div>
+  </header>
+
+  <div class="shared-gallery__grid">
+    <form
+      class="shared-gallery__panel shared-gallery__panel--form"
+      [formGroup]="briefForm"
+      (ngSubmit)="submitBrief()"
+    >
+      <div class="shared-gallery__panel-head">
+        <div>
+          <p class="shared-gallery__panel-eyebrow">Demo форма</p>
+          <h2>Бриф на дизайн</h2>
+        </div>
+        <span class="shared-gallery__status-chip"
+          >{{ briefForm.valid ? 'готово к отправке' : 'заполните поля' }}</span
+        >
+      </div>
+
+      <ui-input
+        formControlName="fullName"
+        label="Имя контакта"
+        placeholder="Александр Иванов"
+        hint="Используйте имя, которое появится в переписке"
+        [error]="controlError(briefForm.controls.fullName)"
+        [required]="true"
+      ></ui-input>
+
+      <ui-input
+        formControlName="email"
+        type="email"
+        label="Рабочая почта"
+        placeholder="team@coco.design"
+        hint="Мы отправим приглашение на workshop"
+        [error]="controlError(briefForm.controls.email)"
+        [required]="true"
+      ></ui-input>
+
+      <ui-select
+        formControlName="projectType"
+        label="Тип запроса"
+        [options]="projectOptions"
+        hint="Выберите направление проекта"
+      ></ui-select>
+
+      <ui-textarea
+        formControlName="message"
+        label="Контекст"
+        placeholder="Опишите задачи, метрики успеха и сроки"
+        hint="Можно добавить ссылки на референсы"
+      ></ui-textarea>
+
+      <ui-checkbox
+        formControlName="updates"
+        label="Подписаться на обновления"
+        description="Релизы компонентов и best practices 1 раз в месяц"
+      ></ui-checkbox>
+
+      <ui-checkbox
+        formControlName="marketing"
+        label="Разрешить делиться кейсом"
+        description="Мы запросим согласование перед публикацией"
+      ></ui-checkbox>
+
+      <div class="shared-gallery__form-actions">
+        <ui-button type="submit" [disabled]="briefForm.invalid">
+          Отправить бриф
+        </ui-button>
+        <ui-button type="button" variant="secondary">Сохранить черновик</ui-button>
+      </div>
+    </form>
+
+    <section class="shared-gallery__panel shared-gallery__panel--showcase">
+      <div class="shared-gallery__panel-head">
+        <div>
+          <p class="shared-gallery__panel-eyebrow">Showcase</p>
+          <h2>Состояния и темы</h2>
+        </div>
+      </div>
+
+      <div class="shared-gallery__cards">
+        <article class="shared-gallery__card">
+          <p class="shared-gallery__card-title">Переключатели</p>
+          <form [formGroup]="previewForm" class="shared-gallery__stack">
+            <ui-toggle
+              formControlName="instantPreview"
+              label="Мгновенный превью"
+              description="Импортируйте компонент и сразу тестируйте темы"
+            ></ui-toggle>
+            <ui-toggle
+              formControlName="pushNotifications"
+              label="Push уведомления"
+              description="Сообщим команде о новых контролах"
+            ></ui-toggle>
+          </form>
+        </article>
+
+        <article class="shared-gallery__card shared-gallery__card--buttons">
+          <p class="shared-gallery__card-title">Кнопки</p>
+          <div class="shared-gallery__button-row">
+            <ui-button size="sm">Primary</ui-button>
+            <ui-button size="sm" variant="secondary">Secondary</ui-button>
+            <ui-button size="sm" variant="ghost">Ghost</ui-button>
+          </div>
+          <div class="shared-gallery__button-row">
+            <ui-button size="md" [loading]="true">Loading</ui-button>
+            <ui-button size="lg" [fullWidth]="true">Full width CTA</ui-button>
+          </div>
+        </article>
+
+        <article class="shared-gallery__card">
+          <p class="shared-gallery__card-title">Скоро в shared</p>
+          <ul class="shared-gallery__upcoming">
+            <li *ngFor="let item of upcomingComponents">{{ item }}</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </div>
+</section>
+
